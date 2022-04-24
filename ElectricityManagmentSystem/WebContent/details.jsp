@@ -11,6 +11,14 @@ if (request.getParameter("unit") != null)
  request.getParameter("unifee"));
  session.setAttribute("statusMsg", stsMsg);
  }
+
+//Delete item----------------------------------
+if (request.getParameter("id") != null) 
+{ 
+DataMange itemObj = new DataMange(); 
+String stsMsg = itemObj.deleteItem(request.getParameter("id")); 
+session.setAttribute("statusMsg", stsMsg); 
+}
 %>
     
     
