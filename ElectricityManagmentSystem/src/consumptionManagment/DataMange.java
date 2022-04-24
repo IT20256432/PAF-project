@@ -141,7 +141,36 @@ public class DataMange {
 	 } 
 	return output; 
 	}
-
+	
+	
+	public String updateItem(String id, String unit, String unifee)
+	{ 
+		 String output = ""; 
+		 try
+		 { 
+		 Connection con = connect(); 
+		 if (con == null) 
+		 {return "Error while connecting to the database for updating."; } 
+		 // create a prepared statement
+		 String query = "UPDATE billdata SET unit=?,unifee=? WHERE id=?"; 
+		 PreparedStatement preparedStmt = con.prepareStatement(query); 
+		 // binding values
+		 preparedStmt.setString(1, id); 
+		 preparedStmt.setString(2, unit); 		
+		 preparedStmt.setString(4, unifee); 
+		// preparedStmt.setInt(5, Integer.parseInt(ID)); 
+		 // execute the statement
+		 preparedStmt.execute(); 
+		 con.close(); 
+		 output = "Updated successfully"; 
+		 } 
+		 catch (Exception e) 
+		 { 
+		 output = "Error while updating the item."; 
+		 System.err.println(e.getMessage()); 
+		 } 
+		 return output; 
+		 } 
 	
 	
 	
